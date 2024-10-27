@@ -1,5 +1,5 @@
 [package]
-name = "003-variables_test"
+name = "unit-01-002-data_type_test"
 version = "0.1.0"
 edition = "2021"
 

@@ -1,7 +1,6 @@
 [package]
-name = "001-guessing_game"
+name = "unit-01-003-variables_test"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rand="0.8.5"
