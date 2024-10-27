@@ -1,0 +1,6 @@
+[package]
+name = "003-variables_test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
