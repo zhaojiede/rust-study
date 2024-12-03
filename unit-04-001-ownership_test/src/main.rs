@@ -8,8 +8,13 @@ fn main() {
     // string_test();
     // variable_int_move();
     // variable_string_move();
-    variable_string_clone();
+    // variable_string_clone();
+    // variable_function_test();
+    // variable_owner_function_test();
+    variable_give_and_back_test();
 }
+
+// ***变量的所有权总遵循相同的模式：将值赋值给另一个变量时移动它。当持有堆中数据值的变量离开作用域时，其值将通过 drop 被清理掉，除非数据被移动到另一个变量所有。***
 
 // 作用域是一个项(item)在程序中有效的范围
 // fn scope_test() {
@@ -51,10 +56,64 @@ fn main() {
 // }
 
 // 当需要深度复制 String 中 堆上 数据，而不仅仅是栈上数据时，可以使用一个叫做 clone 的函数
-fn variable_string_clone() {
+// fn variable_string_clone() {
+//     let s1 = String::from("hello");
+//     let s2 = s1.clone();
+//     println!("s1={}, s2={}", s1, s2);
+// }
+
+// 将值传递给函数与给变量赋值的原理相似。向函数传递值可能会移动或者复制，就像赋值语句一样
+// fn variable_owner_function_test() {
+//     let s = String::from("hello");      //s 进入作用域
+//     takes_ownership(s);               //s 值移动到函数里....
+//                                                 // ... 所以到这里 s 不再有效
+
+//     let x = 5;                              // x 进入作用域
+//     makes_copy(x);                   // x 应该移动函数里
+//                                                 // 但是 i32 是 copy 的
+//                                                 // 所以在后面可继续使用 x
+// }
+// fn takes_ownership(some_string: String) {       // some_string 进入作用域
+//     println!("{}", some_string);
+// }                                               // 这里，some_string 移出作用域并调用 `drop` 方法。
+//                                                 // 占用内存释放
+
+// fn makes_copy(some_integer: i32) {              // some_integer 进入作用域
+//     println!("{}", some_integer);
+// }                                               // 这里，some_integer 移出作用域。没有特殊之处
+
+
+// 返回值也可以转移所有权
+// fn variable_owner_function_test() {
+//     let s1 = gives_ownership();                     // gives_owership 将返回值转移给 s1
+//     let s2 = String::from("hello");                 // s2 进入作用域
+//     let s3 = takes_and_gives_back(s2);      // s2 被移动到 takes_and_gives_back 中，它将返回值移动给 s3
+
+//     println!("s1:{}, s3:{}", s1, s3)
+// }                                                           // 这里，s3 移出作用域被丢弃。s2 也移出作用域，但已被移走，这里不会做什么。s1 离开作用域并被丢弃
+
+// fn gives_ownership() -> String {                            // gives_ownership 会将返回值移动给调用它的函数
+//     let some_string = String::from("yours");        // some_string 进入作用域
+//     some_string                                             // 返回 some_string 并移出给调用的函数
+// }
+
+// fn takes_and_gives_back(a_string: String) -> String {
+//     a_string
+// } 
+
+
+//想要函数使用变量，在函数结束后还要继续使用变量，并且想要函数产生的一些数据
+fn variable_give_and_back_test() {
     let s1 = String::from("hello");
-    let s2 = s1.clone();
-    println!("s1={}, s2={}", s1, s2);
+    let (s2, len) = calculate_length(s1);
+    println!("The length of {} is {}", s2, len);
 }
+
+fn calculate_length(s: String) -> (String, usize) {
+    let len = s.len();
+    (s, len)
+}
+
+
 
 
