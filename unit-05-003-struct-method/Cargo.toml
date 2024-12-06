@@ -1,0 +1,6 @@
+[package]
+name = "unit-05-003-struct-method"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
