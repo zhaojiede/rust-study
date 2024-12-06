@@ -7,7 +7,8 @@ fn main() {
     // first_word_no_slice();
     // string_slice_test();
     // first_word_test();
-    first_word_test2();
+    // first_word_test2();
+    slice_arrary();
 }
 
 // 获取字符串中第一个单词。
@@ -31,8 +32,8 @@ fn main() {
 
 // 字符串 Slice (String Slice): 是 String 中一部分值的引用
 // &string_some[starting_index..ending_index]: 可以使用一个中括号中的[starting_index..ending_index]指定的 range 创建一个 slice, 
-// 其中starting_index 是 slice 的第一个位置，ending_index 是 slice 的最后一个位置的后一个值
-// Slice 的数据结构存储了 slice 的开始位置和长度，长度对应于 ending_index-starting_index 的值
+// 其中starting_index 是 slice 的第一个位置，ending_index 是 slice 的最后一个位置+1
+// Slice 的【数据结构】存储了 slice 的开始位置和长度，长度对应于 ending_index-starting_index 的值
 // fn  string_slice_test() {
 //     let s = String::from("hello world");
 
@@ -72,92 +73,49 @@ fn main() {
 // }
 
 // 重写 获取第一个单词 测试。适配 String 类型参数，同时也适配 String 的 Slice 作为参数 
-fn first_word_test2() {
-    // let s = String::from("My name is xiaozhao.");
-    let s = String::from("My name is xiaozhao.");
+// fn first_word_test2() {
+//     // let s = String::from("My name is xiaozhao.");
+//     let s = String::from("My name is xiaozhao.");
 
-    // 适用于 `String` 的引用，这等价于整个 `String` 的 Slice
-    let first_word1 = first_word2(&s);
-    println!("The first word1 of 【{s}】 is {first_word1}");
+//     // 适用于 `String` 的引用，这等价于整个 `String` 的 Slice
+//     let first_word1 = find_first_word(&s);
+//     println!("The first word1 of 【{s}】 is {first_word1}");
 
-    let first_word2 = first_word2(&s[0..6]);
-    println!("The first word2 of 【{s}】 is {first_word2}");
+//     let first_word2 = find_first_word(&s[0..6]);
+//     println!("The first word2 of 【{s}】 is {first_word2}");
 
-    let my_string = "hello world";
+//     let my_string = "hello world";
 
-    // `first_word` 适用于字符串字面值，部分或全部
-    let first_word3 = first_word2(&my_string[0..6]);
-    // println!("The first word3 of 【{my_string}】 is {first_word3}");
+//     // `first_word` 适用于字符串字面值，部分或全部
+//     let first_word3 = find_first_word(&my_string[0..6]);
+//     println!("The first word3 of 【{my_string}】 is {first_word3}");
 
-    let first_word4 = first_word2(&my_string[..]);
-    // println!("The first word4 of 【{my_string}】 is {first_word4}");
+//     let first_word4 = find_first_word(&my_string[..]);
+//     println!("The first word4 of 【{my_string}】 is {first_word4}");
 
-    let first_word5 = first_word2(my_string);
-    // println!("The first word5 of 【{my_string}】 is {first_word5}");
+//     // 因为字符串字面值已经是字符串 Slice,这也是使用的，无需 Slice 
+//     let first_word5 = find_first_word(my_string);
+//     println!("The first word5 of 【{my_string}】 is {first_word5}");
 
-    let my_string = String::from("hello world");
-    // `first_word` 适用于 `String`（的 slice），部分或全部
-    let word = first_word(&my_string[0..6]);
-    println!("The first word5 of 【{my_string}】 is {word}");
-    let word = first_word(&my_string[..]);
-    println!("The first word5 of 【{my_string}】 is {word}");
-    // `first_word` 也适用于 `String` 的引用，
-    // 这等价于整个 `String` 的 slice
-    let word = first_word(&my_string);
-    println!("The first word5 of 【{my_string}】 is {word}");
-    let my_string_literal = "hello world";
-    // `first_word` 适用于字符串字面值，部分或全部
-    let word = first_word(&my_string_literal[0..6]);
-    println!("The first word5 of 【{my_string_literal}】 is {word}");
-    let word = first_word(&my_string_literal[..]);
-    println!("The first word5 of 【{my_string_literal}】 is {word}");
-    // 因为字符串字面值已经 **是** 字符串 slice 了，
-    // 这也是适用的，无需 slice 语法！
-    let word = first_word(my_string_literal);
-    println!("The first word5 of 【{my_string_literal}】 is {word}");
-
-}
-fn first_word(s: &str) -> &str {                     // “字符串 slice” 的类型声明写作 &str
-    let bytes = s.as_bytes();
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' '{
-            return &s[..i];
-        }
-    }
-    &s[..]                                              // 经测试 &s[..] 于 &s 都能正常返回整个字符串
-}
-
-// fn first_word(s: &str) -> &str {
+// }
+// fn find_first_word(s: &str) -> &str {                     // “字符串 slice” 的类型声明写作 &str
 //     let bytes = s.as_bytes();
 //     for (i, &item) in bytes.iter().enumerate() {
-//         if item == b' ' {
-//             return &s[0..i];
+//         if item == b' '{
+//             return &s[..i];
 //         }
 //     }
-//     &s[..]
+//     &s[..]                                              // 经测试 &s[..] 于 &s 都能正常返回整个字符串
 // }
 
+fn slice_arrary() {
+    let a = [1, 2, 3, 4, 5];
 
-// fn main() {
-//     let my_string = String::from("hello world");
-//     // `first_word` 适用于 `String`（的 slice），部分或全部
-//     let word = first_word(&my_string[0..6]);
-//     println!("The first word5 of 【{my_string}】 is {word}");
-//     let word = first_word(&my_string[..]);
-//     println!("The first word5 of 【{my_string}】 is {word}");
-//     // `first_word` 也适用于 `String` 的引用，
-//     // 这等价于整个 `String` 的 slice
-//     let word = first_word(&my_string);
-//     println!("The first word5 of 【{my_string}】 is {word}");
-//     let my_string_literal = "hello world";
-//     // `first_word` 适用于字符串字面值，部分或全部
-//     let word = first_word(&my_string_literal[0..6]);
-//     println!("The first word5 of 【{my_string_literal}】 is {word}");
-//     let word = first_word(&my_string_literal[..]);
-//     println!("The first word5 of 【{my_string_literal}】 is {word}");
-//     // 因为字符串字面值已经 **是** 字符串 slice 了，
-//     // 这也是适用的，无需 slice 语法！
-//     let word = first_word(my_string_literal);
-//     println!("The first word5 of 【{my_string_literal}】 is {word}");
-// }
+    // slice start_index:开始值的 index; end_indes:结束值的index+1
+    let slice = &a[1..3];
+
+    assert_eq!(slice, &[2, 3]);
+
+}
+
 
