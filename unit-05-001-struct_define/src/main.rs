@@ -5,7 +5,7 @@
 // 和元组一样，结构体每个部分都可以是不同类型。但不同于元组，结构体需要命名各部分数据以便能清楚的表明其值的意义。
 // 结构体相对于元组，不需要依赖顺序指定或访问示例中的值
 fn main() {
-    // init_user();
+    init_user();
 
     // mut_init_user();
     // hide_init_user();
@@ -22,17 +22,17 @@ struct User {
     sign_in_count: u64
 }
 
-// // 创建一个实例，需要以结构体名字开头，接着在大括号中使用 key: value 键-值对的形式提供字段，其中 key 是字段名，value 是需要存储在字段中的数据值。
-// // 实例中 字段的顺序不需要和他们在结构体中的声明顺序一致。
-// fn init_user() {
-//     let user1 = User {
-//         active: true,
-//         username: String::from("some_user"),
-//         email: String::from("some_user@example.com"),
-//         sign_in_count: 1
-//     };
-//     println!("user info -> active:{}, username:{}, email:{}, sign_in_count:{}", user1.active, user1.username, user1.email, user1.sign_in_count);
-// }
+// 创建一个实例，需要以结构体名字开头，接着在大括号中使用 key: value 键-值对的形式提供字段，其中 key 是字段名，value 是需要存储在字段中的数据值。
+// 实例中 字段的顺序不需要和他们在结构体中的声明顺序一致。
+fn init_user() {
+    let user1 = User {
+        active: true,
+        username: String::from("some_user"),
+        email: String::from("some_user@example.com"),
+        sign_in_count: 1
+    };
+    println!("user info -> active:{}, username:{}, email:{}, sign_in_count:{}", user1.active, user1.username, user1.email, user1.sign_in_count);
+}
 
 // 如果结构体实例是可变的，可以使用点号为对应字段赋值
 // ** 注意： 整个实例必须是可变的。Rust 不允许只将某个字段标记为可变。
@@ -142,7 +142,7 @@ struct User {
 
 // 类单元结构体(unit-like structs)：没有任何字段的结构体
 // unit-like structs 常常在你想要在某个类型上实现 trait 但不需要在类型中存储数据时发挥作用
-struct AlwaysEqual;
-fn unit_like_struct() {
-    let subjetc = AlwaysEqual;
-}
+// struct AlwaysEqual;
+// fn unit_like_struct() {
+//     let subjetc = AlwaysEqual;
+// }
