@@ -11,7 +11,7 @@ fn main() {
     // hide_init_user();
     // struct_update_old();
     // struct_update_new();
-    tuple_struct();
+    // tuple_struct();
 }
 
 //定义结构体，需要使用 struct 关键字并为整个结构体提供一个名字。接着，在打括号中，定义每一部分数据的名字和类型，我们称为 字段(field)
