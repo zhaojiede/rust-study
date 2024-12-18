@@ -14,6 +14,21 @@
 //      · 路径(path): 一个命名方式。例如结构体、函数或模块的项
 
 /* 包 和 Crate */
+// crate: Rust 在编译时最小的代码单位。如果用 rustc 而不是 cargo 来编译一个文件，编译器还是会将这一个文件认作一个 crate.
+// crate 可以包含模块，模块可以定义在其他文件，然后和 crate 一起编译。
+// crate 有两种形式：二进制项和库。
+// 二进制项可以被编译成可执行程序，比如一个命令行程序或者一个 web server.它必须含有一个 main 函数来定义当程序被执行的时候所需要做的事情。
+// 库并没有 main 函数，他们也不会编译为可执行程序，他们提供一些诸如函数之类的东西，是其他项目也能使用这些东西。
+// crate root 是一个源文件，Rust 编译器以他为起点，并构成你的 crate 的根模块。
+// 包(pacage) 是提供一些列功能的一个或者多个crate. 一个包会包含一个 Cargo.toml 文件，阐述如何去构建这些 crate。
+// Cargo 就是一个包含构建你代码的二进制项的包。Cargo 也包含这些二进制项所依赖的库。
+// 包中可以包含至多一个库 crate(library crate)。包中可以包含任意多个二进制 crate(binary crate), 但必须至少包含一个 crate(无论是库还是二进制的)
+
+/* cargo new my-project */
+// Cargo 遵循一个约定：src/main.rs 就是一个与包同名的二进制 crate 的 crate 根。
+// 同样，Cargo 知道如果包目录中包含 src/lib.rs, 则包带有与其同名的库 crate, 且 src/lib.rs 是 crate 根。
+// crate 跟文件将由 Cargo 传递给 rustc 来实际构件库或者二进制项目。
+// 通过将文件放在 src/bin 目录下，一个包可以拥有多个二进制 crate：每个 src/bin 下的文件都会被编译成一个独立的二进制 crate.
 fn main() {
     println!("Hello, world!");
 }
