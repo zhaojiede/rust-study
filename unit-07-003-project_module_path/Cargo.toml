@@ -1,0 +1,6 @@
+[package]
+name = "unit-07-003-project_module_path"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

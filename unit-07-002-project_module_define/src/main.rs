@@ -17,8 +17,13 @@
 // 6. use 关键字：在一个作用域内，use 关键字创建了一个成员的快捷方式，用来减少路径的重复。在任何可以引用 crate::garden::vegetables::Asparagus 的作用域，
 //      你可以通过 use crate::garden::vegetables::Asparagus; 创建一个快捷方式，然后你就可以在作用域中写 Asparagus 来使用该类型。
 
-use crate::garden::vegetables::Asparagus;
+// 模块让我们可以将一个 crate 中的代码进行分组，以提高可读性和重用性。因为一个模块中的代码是私有的，所以可以利用模块控制项的私有性。
+//    私有项是不可为外部使用的内在详细实现。我们也可以将模块和它其中的项标记为公开的，这样，外部也可以使用并依赖他们。
 
+// src/main.rs 和 src/lib.rs 叫做 crate 根。之所以这样叫它们是因为这两个文件的内容分别在 crate 模块结构的根组成一个名为 crate 的模块，该结构被成为模块树(module tree).
+
+use crate::garden::vegetables::Asparagus;
+ 
 pub mod garden;
 fn main() {
     println!("Hello, world!");
