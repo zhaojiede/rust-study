@@ -1,0 +1,6 @@
+[package]
+name = "unit-008-001-collection_vec"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
