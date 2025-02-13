@@ -1,5 +1,5 @@
 [package]
-name = "unit-009-001-error_recoverable"
+name = "unit-009-002-error_recoverable"
 version = "0.1.0"
 edition = "2021"
 
