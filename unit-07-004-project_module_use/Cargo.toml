@@ -1,5 +1,5 @@
 [package]
-name = "unit-007-005-project_split_file"
+name = "unit-07-004-project_module_use"
 version = "0.1.0"
 edition = "2021"
 

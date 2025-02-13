@@ -1,5 +1,5 @@
 [package]
-name = "unit-008-003-collection_hash_map"
+name = "unit-08-002-collection_string"
 version = "0.1.0"
 edition = "2021"
 

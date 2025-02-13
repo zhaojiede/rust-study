@@ -1,5 +1,5 @@
 [package]
-name = "unit_009-003_error_when_panic"
+name = "unit-09-001-error_unrecoverable"
 version = "0.1.0"
 edition = "2021"
 

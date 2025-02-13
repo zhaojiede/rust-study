@@ -1,5 +1,5 @@
 [package]
-name = "unit-009-001-error_unrecoverable"
+name = "unit-08-003-collection_hash_map"
 version = "0.1.0"
 edition = "2021"
 
