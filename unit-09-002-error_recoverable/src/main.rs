@@ -63,7 +63,7 @@ fn greeting_file_expect() {
 // 使用 Result<String, io::Error> 是因为 File::open 和 read_to_string 两个可能会失败的操作的错误返回值。
 fn read_username_from_file() -> Result<String, io::Error> {
 
-    let username_file_result = File::open("hello.txt");
+    let username_file_result: Result<File, io::Error> = File::open("hello.txt");
 
     let mut username_file = match username_file_result {
         Ok(file) => file,
